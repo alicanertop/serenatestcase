@@ -1,0 +1,79 @@
+{
+  "name": "serenatestcase",
+  "version": "0.0.1",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "clean": "rm -rf node_modules yarn.lock && yarn ios-clean",
+    "ios-clean": "cd ios && rm -rf Pods Podfile.lock && cd ..",
+    "android-clean": "cd android && ./gradlew clean && cd ..",
+    "ios-reinstall": "cd ios && pod install && cd ..",
+    "ios-update": "cd ios && pod update && cd ..",
+    "bootstrap": "yarn && yarn ios-reinstall",
+    "start-c": "watchman watch-del . && react-native start --reset-cache",
+    "ios-c": "yarn ios-clean && yarn ios-reinstall && yarn ios",
+    "ios-uc": "yarn ios-clean && yarn ios-update && yarn ios",
+    "android-c": "yarn android-clean && yarn android",
+    "build-android": "cd android && ./gradlew clean && ./gradlew assembleRelease && cd ..",
+    "android-folder": "cd android/app/build/outputs/apk/release",
+    "repo-reset": "yarn clean && yarn bootstrap",
+    "generate-splashscreen_novuscore": "react-native generate-bootsplash src/assets/img/splash_screen_novuscore.png --background-color=222428 --logo-width=160 --flavor=main",
+    "generate-splashscreen_teapuesto": "react-native generate-bootsplash src/assets/img/splash_screen_teapuesto.png --background-color=ef6e2d --logo-width=193 --flavor=main",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "test": "jest",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+  },
+  "dependencies": {
+    "@react-navigation/bottom-tabs": "^6.5.2",
+    "@react-navigation/native": "^6.1.1",
+    "@react-navigation/native-stack": "^6.9.7",
+    "@types/date-fns": "^2.6.0",
+    "date-fns": "^2.29.3",
+    "react": "18.2.0",
+    "react-native": "0.70.6",
+    "react-native-date-picker": "^4.2.6",
+    "react-native-safe-area-context": "^4.4.1",
+    "react-native-screens": "^3.18.2",
+    "react-native-svg": "^13.6.0",
+    "react-native-swiper-flatlist": "^3.0.18",
+    "react-native-vector-icons": "^9.2.0",
+    "react-native-webview": "^11.26.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.7",
+    "@babel/runtime": "^7.20.7",
+    "@react-native-community/eslint-config": "^3.2.0",
+    "@tsconfig/react-native": "^2.0.3",
+    "@types/jest": "^29.2.4",
+    "@types/react": "^18.0.26",
+    "@types/react-native": "^0.70.8",
+    "@types/react-native-vector-icons": "^6.4.12",
+    "@types/react-test-renderer": "^18.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.47.0",
+    "@typescript-eslint/parser": "^5.47.0",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "eslint": "^8.30.0",
+    "eslint-config-prettier": "8.5.0",
+    "metro-react-native-babel-preset": "^0.73.6",
+    "prettier": "^2.8.1",
+    "react-native-svg-transformer": "^1.0.0",
+    "react-test-renderer": "18.2.0",
+    "typescript": "^4.9.4"
+  },
+  "resolutions": {
+    "@types/react": "^18"
+  },
+  "jest": {
+    "preset": "react-native",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  }
+}
